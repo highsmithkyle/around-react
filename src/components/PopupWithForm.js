@@ -1,35 +1,35 @@
-import Popup from "./Popup"
 
-export default class PopupWithForm extends Popup {
-    constructor({ popupSelector, handleFormSubmit }) {
-        super(popupSelector)
 
-        this._popupForm = this._modalElement.querySelector(".modal__form");
-        this._handleFormSubmit = handleFormSubmit
-        this._button = this._modalElement.querySelector(".modal__save-button")
-    }
 
-    _getInputValues() {
-        this._inputList = Array.from(this._modalElement.querySelectorAll(".modal__info"));
+function PopupWithForm(props) {
+    return (
+        <div className={`modal modal_type_${props.modalType} ${props.isOpen ? ".modal_active" : ""}`}
+        >
 
-        this._formValues = {};
-        this._inputList.forEach((input) => {
-            this._formValues[input.name] = input.value;
-        });
-        return this._formValues;
-    }
+            <div className={`modal__box modal__box_type_${props.moldalType}`}>
+                <button
+                    className={`modal__close-button modal__close-button_type_${props.moldalType} button`}
+                    type="button"
+                    style={{ backgroundImage: `url(${props.closeButtons})` }}
+                    onClick={props.onClose}
+                ></button>
 
-    setEventListeners() {
-        this._modalElement.addEventListener("submit", (e) => {
-            e.preventDefault();
-            this._handleFormSubmit(this._getInputValues());
-        });
-        super.setEventListeners();
-    }
-
-    close() {
-        this._popupForm.reset();
-        super.close();
-    }
+                <form className={`modal__form modal__form_type_${props.modalType}`}
+                    name={`profile-form_type_${props.modalType}`}
+                >
+                    <h2 className={`modal__title modal__title_type${props.modalType}`}>
+                        {props.modalTitle}
+                    </h2>
+                    {props.children}
+                    <button className={`button modal__save-button modal__save-button_type_${props.modalType}`}
+                        type="submit"
+                    >
+                        {props.modalButtonText}
+                    </button>
+                </form>
+            </div>
+        </div>
+    )
 }
 
+export default PopupWithForm;
