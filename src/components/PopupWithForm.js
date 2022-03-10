@@ -1,4 +1,5 @@
 
+import React from 'react';
 
 
 function PopupWithForm(props) {
@@ -18,7 +19,7 @@ function PopupWithForm(props) {
                 <form className={`modal__form modal__form_type_${props.modalType}`}
                     name={`profile-form_type_${props.modalType}`}
                 >
-                    <h2 className={`modal__title modal__title_type${props.modalType}`}>
+                    <h2 className={`modal__title modal__title_type_${props.modalType}`}>
                         {props.modalTitle}
                     </h2>
                     {props.children}

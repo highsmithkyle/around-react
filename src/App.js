@@ -8,13 +8,14 @@ import closeButton from "./images/close-button.svg";
 
 function App() {
 
+
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
 
-  // popups don't open -- dev tools shows state is changing // 
+
 
 
   function handleCardClick(card) {
@@ -45,6 +46,7 @@ function App() {
 
   return (
 
+
     <div>
 
       <Header />
@@ -65,12 +67,12 @@ function App() {
         modalType={"avatar"}
         modalTitle={"Edit profile picture"}
         modalButtonText={"Change"}
-        closeButtons={closeButton}
+        closeButton={closeButton}
         onClose={closeAllPopups}
       >
         <input
-          id="link-input-avatar"
-          className="modal__form modal__form_type_avatar"
+          id="link-avatar-input"
+          className="modal__info modal__info_place_url-input"
           type="url"
           name="avatar"
           placeholder="Image link"
@@ -85,7 +87,7 @@ function App() {
         modalType={"edit"}
         modalTitle={"Edit Profile"}
         modalButtonText={"Save"}
-        closeButtons={closeButton}
+        closeButton={closeButton}
         onClose={closeAllPopups}
       >
         <input
@@ -118,7 +120,7 @@ function App() {
         modalType={"add"}
         modalTitle={"New Place"}
         modalButtonText={"Create"}
-        closeButtons={closeButton}
+        closeButton={closeButton}
         onClose={closeAllPopups}
       >
 

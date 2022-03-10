@@ -51,7 +51,8 @@ function Main(props) {
                     id="profile-add-button"
                     type="button"
                     style={{ backgroundImage: `url(${addButton})` }}
-                    onClick={props.onAddPlaceClick}></button>
+                    onClick={props.onAddPlaceClick}
+                ></button>
 
             </section>
 
