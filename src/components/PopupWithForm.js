@@ -2,15 +2,16 @@
 
 
 function PopupWithForm(props) {
+
     return (
-        <div className={`modal modal_type_${props.modalType} ${props.isOpen ? ".modal_active" : ""}`}
+        <div className={`modal modal_${props.modalType} ${props.isOpen ? "modal_toggle" : ""}`}
         >
 
-            <div className={`modal__box modal__box_type_${props.moldalType}`}>
+            <div className={`modal__box modal__box_type_${props.modalType}`}>
                 <button
-                    className={`modal__close-button modal__close-button_type_${props.moldalType} button`}
+                    className={`modal__close-button modal__close-button_type_${props.modalType} button`}
                     type="button"
-                    style={{ backgroundImage: `url(${props.closeButtons})` }}
+                    style={{ backgroundImage: `url(${props.closeButton})` }}
                     onClick={props.onClose}
                 ></button>
 

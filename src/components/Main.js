@@ -1,11 +1,23 @@
+
 import avatar from "../images/spinner-load.gif"
 import editButton from "../images/edit-button.svg"
+import addButton from "../images/add-button.svg"
 
 
 function Main(props) {
 
 
+    // for API -- work on later//
+
+
+    // const [userName, setUserName] = useState("Pablo Picasso");
+    // const [userDescription, setUserDescription] = useState("Painter");
+    // const [userAvatar, setUserAvatar] = useState(profileAvatar);
+
+
+
     return (
+
 
         <main className="content">
             <section className="profile">
@@ -25,12 +37,21 @@ function Main(props) {
 
                 <div className="profile__info">
                     <div className="profile__name-container">
-                        <h1 className="profile__title">Loading...</h1>
-                        <button className="profile__edit-button" type="button"></button>
+                        <h1 className="profile__title">{""}</h1>
+                        <button className="profile__edit-button"
+                            type="button"
+                            style={{ backgroundImage: `url(${editButton})` }}
+                            onClick={props.onEditProfileClick}
+
+                        ></button>
                     </div>
-                    <p className="profile__subtitle">Loading...</p>
+                    <p className="profile__subtitle">{""}</p>
                 </div>
-                <button className="profile__add-button" id="profile-add-button" type="button"></button>
+                <button className="profile__add-button"
+                    id="profile-add-button"
+                    type="button"
+                    style={{ backgroundImage: `url(${addButton})` }}
+                    onClick={props.onAddPlaceClick}></button>
 
             </section>
 

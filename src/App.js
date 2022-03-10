@@ -14,6 +14,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
 
 
+  // popups don't open -- dev tools shows state is changing // 
+
+
   function handleCardClick(card) {
     setSelectedCard(card);
   }
@@ -59,7 +62,7 @@ function App() {
       <PopupWithForm
 
         isOpen={isEditAvatarPopupOpen}
-        moldalType={"avatar"}
+        modalType={"avatar"}
         modalTitle={"Edit profile picture"}
         modalButtonText={"Change"}
         closeButtons={closeButton}
@@ -79,7 +82,7 @@ function App() {
 
       <PopupWithForm
         isOpen={isEditProfilePopupOpen}
-        moldalType={"edit"}
+        modalType={"edit"}
         modalTitle={"Edit Profile"}
         modalButtonText={"Save"}
         closeButtons={closeButton}
@@ -112,7 +115,7 @@ function App() {
 
       <PopupWithForm
         isOpen={isAddPlacePopupOpen}
-        moldalType={"add"}
+        modalType={"add"}
         modalTitle={"New Place"}
         modalButtonText={"Create"}
         closeButtons={closeButton}
@@ -137,9 +140,6 @@ function App() {
           required
         />
         <span id="add-card-url-error" className="modal__error"></span>
-
-
-
 
       </PopupWithForm>
 
