@@ -3,12 +3,14 @@ import profileAvatar from "../images/spinner-load.gif"
 import editButton from "../images/edit-button.svg"
 import addButton from "../images/add-button.svg"
 import api from "./utils/api";
+import Card from "./Card"
 
 function Main(props) {
 
-    const [userName, setUserName] = useState("Jack Torrance");
-    const [userDescription, setUserDescription] = useState("Family Man");
+    const [userName, setUserName] = useState("Pablo Picasso");
+    const [userDescription, setUserDescription] = useState("Painter");
     const [userAvatar, setUserAvatar] = useState(profileAvatar);
+    const [cards, setCards] = useState([]);
 
     useEffect(() => {
         api
@@ -21,6 +23,14 @@ function Main(props) {
             .catch((error) => console.error(error));
     }, []);
 
+    useEffect(() => {
+        api
+            .getInitialCards()
+            .then((data) => {
+                setCards(data);
+            })
+            .catch((error) => console.error(error))
+    }, []);
 
 
     return (
@@ -60,8 +70,16 @@ function Main(props) {
 
             </section>
 
-            <ul className="elements">
-            </ul>
+            <section className="elements">
+                {cards.map((card) => {
+                    <Card
+                        key={card._id}
+                        cardData={card}
+                        onCardClick={props.onCardClick}
+                    />
+                })}
+
+            </section>
 
         </main>
     )

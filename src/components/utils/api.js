@@ -1,8 +1,3 @@
-
-
-
-
-
 class Api {
     constructor(props) {
         this.baseUrl = props.baseUrl;
