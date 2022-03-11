@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Header from "./components/Header";
 import Footer from "./components/Footer"
 import Main from "./components/Main";
+import ImagePopup from "./components/ImagePopup"
 import PopupWithForm from "./components/PopupWithForm";
 import closeButton from "./images/close-button.svg";
 
@@ -56,8 +57,6 @@ function App() {
         onEditProfileClick={handleEditProfileClick}
         onAddPlaceClick={handleAddPlaceClick}
         onCardClick={handleCardClick}
-
-
       />
 
 
@@ -145,7 +144,11 @@ function App() {
 
       </PopupWithForm>
 
-
+      <ImagePopup
+        closeButton={closeButton}
+        selectedCard={selectedCard}
+        onClose={closeAllPopups}
+      />
 
 
 

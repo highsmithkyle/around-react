@@ -1,30 +1,37 @@
-
-import avatar from "../images/spinner-load.gif"
+import React, { useEffect, useState } from "react";
+import profileAvatar from "../images/spinner-load.gif"
 import editButton from "../images/edit-button.svg"
 import addButton from "../images/add-button.svg"
-
+import api from "./utils/api";
 
 function Main(props) {
 
+    const [userName, setUserName] = useState("Jack Torrance");
+    const [userDescription, setUserDescription] = useState("Family Man");
+    const [userAvatar, setUserAvatar] = useState(profileAvatar);
 
-    // for API -- work on later//
-
-
-    // const [userName, setUserName] = useState("Pablo Picasso");
-    // const [userDescription, setUserDescription] = useState("Painter");
-    // const [userAvatar, setUserAvatar] = useState(profileAvatar);
+    useEffect(() => {
+        api
+            .getInitialProfile()
+            .then((data) => {
+                setUserName(data.name);
+                setUserDescription(data.about)
+                setUserAvatar(data.avatar)
+            })
+            .catch((error) => console.error(error));
+    }, []);
 
 
 
     return (
 
-
         <main className="content">
+
             <section className="profile">
+
                 <div className="profile__avatar">
                     <div className="profile__elipse">
-                        <img className="profile__image" src={avatar}
-                            alt="profile-image" />
+                        <img className="profile__image" src={userAvatar} alt="profile-image" />
                         <button className="button profile__avatar-button"
                             type="button"
                             onClick={props.onEditAvatarClick}
@@ -32,12 +39,9 @@ function Main(props) {
                         ></button>
                     </div>
                 </div>
-
-
-
                 <div className="profile__info">
                     <div className="profile__name-container">
-                        <h1 className="profile__title">{""}</h1>
+                        <h1 className="profile__title">{userName}</h1>
                         <button className="profile__edit-button"
                             type="button"
                             style={{ backgroundImage: `url(${editButton})` }}
@@ -45,7 +49,7 @@ function Main(props) {
 
                         ></button>
                     </div>
-                    <p className="profile__subtitle">{""}</p>
+                    <p className="profile__subtitle">{userDescription}</p>
                 </div>
                 <button className="profile__add-button"
                     id="profile-add-button"
@@ -60,7 +64,6 @@ function Main(props) {
             </ul>
 
         </main>
-
     )
 }
 
