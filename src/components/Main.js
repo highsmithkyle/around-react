@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import profileAvatar from "../images/spinner-load.gif"
 import editButton from "../images/edit-button.svg"
 import addButton from "../images/add-button.svg"
-import api from "./utils/api";
+import api from "../utils/api";
 import Card from "./Card"
 
 function Main(props) {

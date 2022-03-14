@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import Header from "./components/Header";
-import Footer from "./components/Footer"
-import Main from "./components/Main";
-import ImagePopup from "./components/ImagePopup"
-import PopupWithForm from "./components/PopupWithForm";
-import closeButton from "./images/close-button.svg";
+import Header from "./Header";
+import Footer from "./Footer"
+import Main from "./Main";
+import ImagePopup from "./ImagePopup"
+import PopupWithForm from "./PopupWithForm";
+import closeButton from "../images/close-button.svg";
 
 
 function App() {
