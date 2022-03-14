@@ -1,5 +1,6 @@
 import trashIcon from "../images/vector-trash.png"
 import heartIcon from "../images/heart.svg"
+import editButton from "../images/edit-button.svg"
 
 
 
@@ -13,9 +14,9 @@ function Card({ cardData, onCardClick }) {
         <li className="elements__container">
 
             <button
-                className="elements__delete"
+                className="button elements__delete"
                 type="button"
-                style={{ backgroundImage: `url${trashIcon}` }}
+                style={{ backgroundImage: `url(${trashIcon})` }}
             />
 
             <img
@@ -31,7 +32,8 @@ function Card({ cardData, onCardClick }) {
                     <button
                         className="elements__heart"
                         type="button"
-                        style={{ backgroundImage: `url${heartIcon}` }}
+                        style={{ backgroundImage: `url(${heartIcon})` }}
+
                     />
                     <p className="elements__text elements__heart-number">{cardData.likes.length}</p>
                 </div>
