@@ -1,13 +1,11 @@
 .elements__delete {
-  /* background-image: url(../../../images/vector-trash.png); */
   height: 19px;
   width: 18px;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: transparent;
   position: absolute;
   right: 18px;
   top: 15px;
-  background-color: transparent;
   border: none;
   outline: none;
+  z-index: 999;
 }

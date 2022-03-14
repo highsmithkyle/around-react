@@ -1,8 +1,10 @@
 function ImagePopup(props) {
 
     return (
-        <div className={`modal modal_type_image-expand} ${props.isOpen ? "modal_toggle" : ""}`}
-        >
+
+        <div
+            className={`modal modal_type_image-expand ${props.selectedCard ? "modal_toggle" : ""
+                }`}>
 
             <div className={`modal__box modal__box_type_image-expand`}>
                 <button
@@ -16,8 +18,9 @@ function ImagePopup(props) {
                     src={`${props.selectedCard && props.selectedCard.cardData.link}`}
                     alt={`${props.selectedCard && props.selectedCard.cardData.name}`}
                 />
-                <div className="modal__image-subtitle"></div>
-                {`${props.selectedCard && props.selectedCard.cardData.name}`}
+                <div className="modal__image-subtitle">
+                    {`${props.selectedCard && props.selectedCard.cardData.name}`}
+                </div>
             </div>
         </div>
     )

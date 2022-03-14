@@ -16,13 +16,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
 
 
-
-
-
   function handleCardClick(card) {
     setSelectedCard(card);
   }
-
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -44,10 +40,7 @@ function App() {
   }
 
 
-
   return (
-
-
     <div>
 
       <Header />
@@ -59,9 +52,7 @@ function App() {
         onCardClick={handleCardClick}
       />
 
-
       <PopupWithForm
-
         isOpen={isEditAvatarPopupOpen}
         modalType={"avatar"}
         modalTitle={"Edit profile picture"}
@@ -99,6 +90,7 @@ function App() {
           maxLength="40"
         />
         <span id="name-input-error" className="modal__error"></span>
+
         <input id="about-input"
           className="modal__info modal__info_place_about-me-input"
           type="text"
@@ -106,13 +98,10 @@ function App() {
           placeholder="Explorer"
           required
           minLength="2"
-          maxLength="200" />
-
+          maxLength="200"
+        />
         <span id="about-input-error" className="modal__error"></span>
       </PopupWithForm>
-
-
-
 
       <PopupWithForm
         isOpen={isAddPlacePopupOpen}
@@ -144,13 +133,18 @@ function App() {
 
       </PopupWithForm>
 
+      <PopupWithForm
+        modalType={"delete"}
+        modalTitle={"Are you sure?"}
+        modalButtonText={"Yes"}
+        closeButton={closeButton}
+      />
+
       <ImagePopup
         closeButton={closeButton}
         selectedCard={selectedCard}
         onClose={closeAllPopups}
       />
-
-
 
       <Footer />
     </div>

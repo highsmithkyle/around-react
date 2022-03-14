@@ -1,7 +1,5 @@
 import trashIcon from "../images/vector-trash.png"
 import heartIcon from "../images/heart.svg"
-import editButton from "../images/edit-button.svg"
-
 
 
 function Card({ cardData, onCardClick }) {
@@ -14,7 +12,7 @@ function Card({ cardData, onCardClick }) {
         <li className="elements__container">
 
             <button
-                className="button elements__delete"
+                className="elements__delete"
                 type="button"
                 style={{ backgroundImage: `url(${trashIcon})` }}
             />
