@@ -1,11 +1,23 @@
 import trashIcon from "../images/vector-trash.png"
 import heartIcon from "../images/heart.svg"
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 
 function Card({ cardData, onCardClick }) {
+
+    const user = React.useContext(CurrentUserContext);
+    const isOwn = card.owner_id === user._id;
+
+
+
+
+
+
+
     function HandleClick() {
         onCardClick({ cardData });
     }
+
 
     return (
 

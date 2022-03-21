@@ -3,7 +3,11 @@ import profileAvatar from "../images/spinner-load.gif"
 import editButton from "../images/edit-button.svg"
 import addButton from "../images/add-button.svg"
 import api from "../utils/api";
+
 import Card from "./Card"
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+
+
 
 function Main(props) {
 
@@ -11,6 +15,8 @@ function Main(props) {
     const [userDescription, setUserDescription] = useState("Painter");
     const [userAvatar, setUserAvatar] = useState(profileAvatar);
     const [cards, setCards] = useState([]);
+
+    const currentUser = React.useContext(CurrentUserContext);
 
     useEffect(() => {
         api
@@ -41,10 +47,12 @@ function Main(props) {
 
                 <div className="profile__avatar">
                     <div className="profile__elipse">
-                        <img className="profile__image" src={userAvatar} alt="profile-image" />
+                        <img className="profile__image"
+                            src={currentUser.avatar}
+                            alt={currentUser.name} />
                         <button className="button profile__avatar-button"
                             type="button"
-                            onClick={props.onEditAvatarClick}
+                            onClick={onEditAvatarClick}
                             style={{ backgroundImage: `url(${editButton})` }}
                         ></button>
                     </div>
@@ -55,7 +63,7 @@ function Main(props) {
                         <button className="profile__edit-button"
                             type="button"
                             style={{ backgroundImage: `url(${editButton})` }}
-                            onClick={props.onEditProfileClick}
+                            onClick={onEditProfileClick}
 
                         ></button>
                     </div>
@@ -77,8 +85,8 @@ function Main(props) {
                     return (
                         <Card
                             key={card._id}
-                            cardData={card}
-                            onCardClick={props.onCardClick}
+                            card={card}
+                            onCardClick={onCardClick}
                         />
                     )
                 })}

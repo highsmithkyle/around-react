@@ -4,6 +4,12 @@ class Api {
         this.headers = props.headers;
     }
 
+    getProfile() {
+        return fetch(`${this.baseUrl}/users/me`, {
+            headers: this.headers,
+        }).then((res) => this._checkErrors(res));
+    }
+
     _checkErrors(res) {
         if (res.ok) {
             return res.json();
