@@ -2,42 +2,46 @@ import React, { useEffect, useState } from "react";
 import profileAvatar from "../images/spinner-load.gif"
 import editButton from "../images/edit-button.svg"
 import addButton from "../images/add-button.svg"
-import api from "../utils/api";
+
 
 import Card from "./Card"
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 
 
-function Main(props) {
+function Main({
+    onEditAvatarClick,
+    onEditProfileClick,
+    onAddPlaceClick,
+    onCardClick,
+    cards,
 
-    const [userName, setUserName] = useState("Pablo Picasso");
-    const [userDescription, setUserDescription] = useState("Painter");
-    const [userAvatar, setUserAvatar] = useState(profileAvatar);
-    const [cards, setCards] = useState([]);
+
+
+
+}) {
+
+    // const [userName, setUserName] = useState("Pablo Picasso");
+    // const [userDescription, setUserDescription] = useState("Painter");
+    // const [userAvatar, setUserAvatar] = useState(profileAvatar);
+    // const [cards, setCards] = useState([]);
+
+
+
+    // useEffect(() => {
+    //     api
+    //         .getInitialProfile()
+    //         .then((data) => {
+    //             setUserName(data.name);
+    //             setUserDescription(data.about)
+    //             setUserAvatar(data.avatar)
+    //         })
+    //         .catch((error) => console.error(error));
+    // }, []);
+
+
 
     const currentUser = React.useContext(CurrentUserContext);
-
-    useEffect(() => {
-        api
-            .getInitialProfile()
-            .then((data) => {
-                setUserName(data.name);
-                setUserDescription(data.about)
-                setUserAvatar(data.avatar)
-            })
-            .catch((error) => console.error(error));
-    }, []);
-
-    useEffect(() => {
-        api
-            .getInitialCards()
-            .then((data) => {
-                setCards(data);
-            })
-            .catch((error) => console.error(error))
-    }, []);
-
 
     return (
 
@@ -59,7 +63,7 @@ function Main(props) {
                 </div>
                 <div className="profile__info">
                     <div className="profile__name-container">
-                        <h1 className="profile__title">{userName}</h1>
+                        <h1 className="profile__title">{currentUser.name}</h1>
                         <button className="profile__edit-button"
                             type="button"
                             style={{ backgroundImage: `url(${editButton})` }}
@@ -67,13 +71,13 @@ function Main(props) {
 
                         ></button>
                     </div>
-                    <p className="profile__subtitle">{userDescription}</p>
+                    <p className="profile__subtitle">{currentUser.about}</p>
                 </div>
                 <button className="profile__add-button"
                     id="profile-add-button"
                     type="button"
                     style={{ backgroundImage: `url(${addButton})` }}
-                    onClick={props.onAddPlaceClick}
+                    onClick={onAddPlaceClick}
                 ></button>
 
             </section>
@@ -82,6 +86,7 @@ function Main(props) {
 
 
                 {cards.map((card) => {
+                    // debugger;
                     return (
                         <Card
                             key={card._id}

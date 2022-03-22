@@ -1,21 +1,19 @@
 import trashIcon from "../images/vector-trash.png"
 import heartIcon from "../images/heart.svg"
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import React from "react";
 
 
-function Card({ cardData, onCardClick }) {
+function Card({ card, onCardClick }) {
 
-    const user = React.useContext(CurrentUserContext);
-    const isOwn = card.owner_id === user._id;
-
-
+    const currentUser = React.useContext(CurrentUserContext);
 
 
 
 
 
     function HandleClick() {
-        onCardClick({ cardData });
+        onCardClick(card);
     }
 
 
@@ -31,13 +29,13 @@ function Card({ cardData, onCardClick }) {
 
             <img
                 className="elements__image"
-                src={cardData.link}
-                alt={cardData.name}
+                src={card.link}
+                alt={card.name}
                 onClick={HandleClick}
             />
 
             <div className="elements__text-container">
-                <h2 className="elements__text">{cardData.name}</h2>
+                <h2 className="elements__text">{card.name}</h2>
                 <div className="elements__heart-container">
                     <button
                         className="elements__heart"
@@ -45,7 +43,7 @@ function Card({ cardData, onCardClick }) {
                         style={{ backgroundImage: `url(${heartIcon})` }}
 
                     />
-                    <p className="elements__text elements__heart-number">{cardData.likes.length}</p>
+                    <p className="elements__text elements__heart-number">{card.likes.length}</p>
                 </div>
             </div>
         </li>

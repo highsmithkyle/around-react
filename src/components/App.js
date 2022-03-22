@@ -18,15 +18,19 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
 
   const [currentUser, setCurrentUser] = useState({});
-  // const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([]);
+
+
+
 
   useEffect(() => {
+
     api
-      .getProfile()
+      .getInitialProfile()
       .then((data) => {
         setCurrentUser(data);
       })
-      .catch((err) => console.error(error));
+      .catch((error) => console.error(error));
   }, []);
 
 
@@ -63,6 +67,7 @@ function App() {
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
+          cards={cards}
         />
 
         <PopupWithForm
