@@ -30,9 +30,6 @@ function Card({ card, onCardClick, onCardLike }) {
     }
 
 
-
-
-
     return (
 
         <li className="elements__container">

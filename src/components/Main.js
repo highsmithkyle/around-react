@@ -20,7 +20,6 @@ function Main({
 }) {
 
 
-
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
