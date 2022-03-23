@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import profileAvatar from "../images/spinner-load.gif"
 import editButton from "../images/edit-button.svg"
 import addButton from "../images/add-button.svg"
+import api from "../utils/api";
 
 
 import Card from "./Card"
@@ -15,29 +16,8 @@ function Main({
     onAddPlaceClick,
     onCardClick,
     cards,
-
-
-
-
+    onCardLike,
 }) {
-
-    // const [userName, setUserName] = useState("Pablo Picasso");
-    // const [userDescription, setUserDescription] = useState("Painter");
-    // const [userAvatar, setUserAvatar] = useState(profileAvatar);
-    // const [cards, setCards] = useState([]);
-
-
-
-    // useEffect(() => {
-    //     api
-    //         .getInitialProfile()
-    //         .then((data) => {
-    //             setUserName(data.name);
-    //             setUserDescription(data.about)
-    //             setUserAvatar(data.avatar)
-    //         })
-    //         .catch((error) => console.error(error));
-    // }, []);
 
 
 
@@ -92,6 +72,9 @@ function Main({
                             key={card._id}
                             card={card}
                             onCardClick={onCardClick}
+                            onCardLike={onCardLike}
+
+
                         />
                     )
                 })}
@@ -103,3 +86,19 @@ function Main({
 }
 
 export default Main;
+
+
+    // const [userName, setUserName] = useState("Pablo Picasso");
+    // const [userDescription, setUserDescription] = useState("Artist");
+    // const [userAvatar, setUserAvatar] = useState(profileAvatar);
+
+    // useEffect(() => {
+    //     api
+    //         .getInitialProfile()
+    //         .then((data) => {
+    //             setUserName(data.name);
+    //             setUserDescription(data.about)
+    //             setUserAvatar(data.avatar)
+    //         })
+    //         .catch((error) => console.error(error));
+    // }, []);

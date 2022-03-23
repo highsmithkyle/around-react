@@ -29,6 +29,15 @@ class Api {
         }).then((res) => this._checkErrors(res))
     }
 
+
+    likeCard(cardId, isLiked) {
+        const method = isLiked ? "DELETE" : "PUT";
+        return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+            method: method,
+            headers: this.headers,
+        }).then((res) => this._checkErrors(res));
+    }
+
 }
 
 

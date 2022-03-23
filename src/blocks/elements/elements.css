@@ -2,8 +2,14 @@
 @import url(../elements/__image/elements__image.css);
 @import url(../elements/__text/elements__text.css);
 @import url(../elements/__text-container/elements__text-container.css);
-@import url(../elements/__heart/elements__heart.css);
+
 @import url(../elements/__delete/elements__delete.css);
+@import url(../elements/__delete/__delete_visible/elements__delete_visible.css);
+@import url(../elements/__delete/__delete_hidden/elements__delete_hidden.css);
+
+@import url(../elements/__heart/elements__heart.css);
+@import url(../elements/__heart/_visible/elements__heart_visible.css);
+@import url(../elements/__heart/_hidden/elements__heart_hidden.css);
 @import url(../elements/__heart-container/elements__heart-container.css);
 @import url(../elements/__heart-number/element__heart-number.css);
 

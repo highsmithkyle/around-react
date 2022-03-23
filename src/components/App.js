@@ -16,11 +16,18 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
 
 
+  useEffect(() => {
+    api
+      .getInitialCards()
+      .then((data) => {
+        setCards(data);
+      })
+      .catch((error) => console.error(error))
+  }, []);
 
 
   useEffect(() => {
@@ -32,6 +39,27 @@ function App() {
       })
       .catch((error) => console.error(error));
   }, []);
+
+
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+    api
+      .likeCard(card._id, isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((item) => (item._id === card._id ? newCard : item))
+        );
+      })
+      .catch((err) => console.error(`Problem liking card: ${err}`));
+  }
+
+
+
+
+
+
+
 
 
   function handleCardClick(card) {
@@ -68,6 +96,7 @@ function App() {
           onAddPlaceClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
           cards={cards}
+          onCardLike={handleCardLike}
         />
 
         <PopupWithForm
