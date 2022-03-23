@@ -17,6 +17,8 @@ function Main({
     onCardClick,
     cards,
     onCardLike,
+    onCardDelete,
+
 }) {
 
 
@@ -72,6 +74,7 @@ function Main({
                             card={card}
                             onCardClick={onCardClick}
                             onCardLike={onCardLike}
+                            onCardDelete={onCardDelete}
 
 
                         />

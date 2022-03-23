@@ -38,6 +38,13 @@ class Api {
         }).then((res) => this._checkErrors(res));
     }
 
+    deleteCard(cardId) {
+        return fetch(`${this.baseUrl}/cards/${cardId}`, {
+            method: "DELETE",
+            headers: this.headers,
+        }).then((res) => this._checkErrors(res));
+    }
+
 }
 
 

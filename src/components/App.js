@@ -54,6 +54,13 @@ function App() {
       .catch((err) => console.error(`Problem liking card: ${err}`));
   }
 
+  function handleCardDelete(card) {
+    api.deleteCard(card._id)
+      .then(() => {
+        setCards(cards.filter((item) => item !== card));
+      })
+      .catch((error) => console.error(error));
+  }
 
 
 
@@ -93,6 +100,7 @@ function App() {
           onCardClick={handleCardClick}
           cards={cards}
           onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
         />
 
         <PopupWithForm
