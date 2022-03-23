@@ -67,7 +67,7 @@ function Main({
 
 
                 {cards.map((card) => {
-                    // debugger;
+
                     return (
                         <Card
                             key={card._id}
@@ -75,7 +75,6 @@ function Main({
                             onCardClick={onCardClick}
                             onCardLike={onCardLike}
                             onCardDelete={onCardDelete}
-
 
                         />
                     )

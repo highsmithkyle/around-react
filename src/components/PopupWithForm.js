@@ -1,6 +1,4 @@
-
 import React from 'react';
-
 
 function PopupWithForm(props) {
 
@@ -18,6 +16,7 @@ function PopupWithForm(props) {
 
                 <form className={`modal__form modal__form_type_${props.modalType}`}
                     name={`profile-form_type_${props.modalType}`}
+                    onSubmit={props.onSubmit}
                 >
                     <h2 className={`modal__title modal__title_type_${props.modalType}`}>
                         {props.modalTitle}

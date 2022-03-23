@@ -30,6 +30,15 @@ class Api {
     }
 
 
+    changeProfileInfo({ name, about }) {
+        return fetch(`${this.baseUrl}/users/me`, {
+            method: "PATCH",
+            headers: this.headers,
+            body: JSON.stringify({ name: name, about: about }),
+        }).then((res) => this._checkErrors(res));
+    }
+
+
     likeCard(cardId, isLiked) {
         const method = isLiked ? "DELETE" : "PUT";
         return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import Header from "./Header";
 import Footer from "./Footer"
 import Main from "./Main";
+import EditProfilePopup from "./EditProfilePopup";
 import ImagePopup from "./ImagePopup"
 import PopupWithForm from "./PopupWithForm";
 import closeButton from "../images/close-button.svg";
@@ -31,7 +32,6 @@ function App() {
 
 
   useEffect(() => {
-
     api
       .getInitialProfile()
       .then((data) => {
@@ -51,8 +51,9 @@ function App() {
           state.map((item) => (item._id === card._id ? newCard : item))
         );
       })
-      .catch((err) => console.error(`Problem liking card: ${err}`));
+      .catch((error) => console.error(error));
   }
+
 
   function handleCardDelete(card) {
     api.deleteCard(card._id)
@@ -62,6 +63,30 @@ function App() {
       .catch((error) => console.error(error));
   }
 
+
+
+
+
+  function handleUpdateUser(userData) {
+    debugger;
+    api
+      .changeProfileInfo(userData)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((error) => console.error(error))
+  }
+
+  function handleUpdateAvatar(userData) {
+    api
+      .changeProfileAvatar(userData)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((error) => console.error(error));
+  }
 
 
 
@@ -122,37 +147,13 @@ function App() {
           <span id="link-avatar-input-error" className="modal__error"></span>
         </PopupWithForm>
 
-
-        <PopupWithForm
+        <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
-          modalType={"edit"}
-          modalTitle={"Edit Profile"}
-          modalButtonText={"Save"}
-          closeButton={closeButton}
           onClose={closeAllPopups}
-        >
-          <input
-            className="modal__info modal__info_place_name-input"
-            type="text"
-            name="name"
-            placeholder="Jacques Cousteau"
-            required
-            minLength="2"
-            maxLength="40"
-          />
-          <span id="name-input-error" className="modal__error"></span>
+          closeButton={closeButton}
+          onUpdateUser={handleUpdateUser}
+        />
 
-          <input id="about-input"
-            className="modal__info modal__info_place_about-me-input"
-            type="text"
-            name="about"
-            placeholder="Explorer"
-            required
-            minLength="2"
-            maxLength="200"
-          />
-          <span id="about-input-error" className="modal__error"></span>
-        </PopupWithForm>
 
         <PopupWithForm
           isOpen={isAddPlacePopupOpen}
