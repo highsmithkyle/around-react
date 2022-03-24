@@ -10,6 +10,7 @@ import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import AddPlacePopup from "./AddPlacePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 
 function App() {
@@ -101,7 +102,6 @@ function App() {
   }
 
 
-
   function handleCardClick(card) {
     setSelectedCard(card);
   }
@@ -128,6 +128,7 @@ function App() {
   return (
     <div>
       <CurrentUserContext.Provider value={currentUser}>
+
         <Header />
 
         <Main
@@ -140,24 +141,13 @@ function App() {
           onCardDelete={handleCardDelete}
         />
 
-        <PopupWithForm
+
+        <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
-          modalType={"avatar"}
-          modalTitle={"Edit profile picture"}
-          modalButtonText={"Change"}
+          onUpdateAvatar={handleUpdateAvatar}
           closeButton={closeButton}
           onClose={closeAllPopups}
-        >
-          <input
-            id="link-avatar-input"
-            className="modal__info modal__info_place_url-input"
-            type="url"
-            name="avatar"
-            placeholder="Image link"
-            required
-          />
-          <span id="link-avatar-input-error" className="modal__error"></span>
-        </PopupWithForm>
+        />
 
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
@@ -171,7 +161,6 @@ function App() {
           onClose={closeAllPopups}
           closeButton={closeButton}
           onAddPlaceSubmit={handleAddPlaceSubmit}
-
         />
 
         <PopupWithForm

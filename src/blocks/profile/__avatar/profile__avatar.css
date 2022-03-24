@@ -6,6 +6,12 @@
   opacity: 1;
 }
 
+@media screen and (max-width: 900px) {
+  .profile__avatar {
+    margin: 0 auto;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .profile__avatar {
     margin: 0 auto;

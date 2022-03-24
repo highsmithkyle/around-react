@@ -46,6 +46,14 @@ class Api {
         }).then((res) => this._checkErrors(res));
     }
 
+    changeProfileAvatar({ avatar }) {
+        return fetch(`${this.baseUrl}/users/me/avatar`, {
+            method: "PATCH",
+            headers: this.headers,
+            body: JSON.stringify({ avatar: avatar }),
+        }).then((res) => this._checkErrors(res));
+    }
+
 
     likeCard(cardId, isLiked) {
         const method = isLiked ? "DELETE" : "PUT";
