@@ -29,6 +29,14 @@ class Api {
         }).then((res) => this._checkErrors(res))
     }
 
+    createCard({ name, link }) {
+        return fetch(`${this.baseUrl}/cards`, {
+            method: "POST",
+            headers: this.headers,
+            body: JSON.stringify({ name, link }),
+        }).then((res) => this._checkErrors(res));
+    }
+
 
     changeProfileInfo({ name, about }) {
         return fetch(`${this.baseUrl}/users/me`, {

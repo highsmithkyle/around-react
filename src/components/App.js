@@ -9,6 +9,8 @@ import closeButton from "../images/close-button.svg";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
+import AddPlacePopup from "./AddPlacePopup";
+
 
 function App() {
 
@@ -88,6 +90,16 @@ function App() {
       .catch((error) => console.error(error));
   }
 
+  function handleAddPlaceSubmit(card) {
+    api
+      .createCard(card)
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
+      .catch((error) => console.error(error));
+  }
+
 
 
   function handleCardClick(card) {
@@ -154,36 +166,13 @@ function App() {
           onUpdateUser={handleUpdateUser}
         />
 
-
-        <PopupWithForm
+        <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
-          modalType={"add"}
-          modalTitle={"New Place"}
-          modalButtonText={"Create"}
-          closeButton={closeButton}
           onClose={closeAllPopups}
-        >
+          closeButton={closeButton}
+          onAddPlaceSubmit={handleAddPlaceSubmit}
 
-          <input id="add-card-title"
-            className="modal__info modal__info_place_new-title-input"
-            type="text"
-            name="name"
-            placeholder="Title"
-            required minLength="1"
-            maxLength="30"
-          />
-          <span id="add-card-title-error" className="modal__error"></span>
-
-          <input id="add-card-url"
-            className="modal__info modal__info_place_url-input"
-            type="url"
-            name="link"
-            placeholder="Image Link"
-            required
-          />
-          <span id="add-card-url-error" className="modal__error"></span>
-
-        </PopupWithForm>
+        />
 
         <PopupWithForm
           modalType={"delete"}
