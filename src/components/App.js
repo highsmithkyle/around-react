@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react"
 import Header from "./Header";
 import Footer from "./Footer"
 import Main from "./Main";
-import EditProfilePopup from "./EditProfilePopup";
-import ImagePopup from "./ImagePopup"
 import PopupWithForm from "./PopupWithForm";
+import EditProfilePopup from "./EditProfilePopup";
+import AddPlacePopup from "./AddPlacePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
+import ImagePopup from "./ImagePopup"
 import closeButton from "../images/close-button.svg";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-
-import AddPlacePopup from "./AddPlacePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
 
 
 function App() {
@@ -65,9 +64,6 @@ function App() {
       })
       .catch((error) => console.error(error));
   }
-
-
-
 
 
   function handleUpdateUser(userData) {
@@ -140,7 +136,6 @@ function App() {
           onCardLike={handleCardLike}
           onCardDelete={handleCardDelete}
         />
-
 
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}

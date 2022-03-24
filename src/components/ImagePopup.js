@@ -1,3 +1,5 @@
+import React from "react"
+
 function ImagePopup(props) {
 
     return (
@@ -15,11 +17,11 @@ function ImagePopup(props) {
                 ></button>
 
                 <img className="modal__image-preview"
-                    src={`${props.selectedCard && props.selectedCard.cardData.link}`}
-                    alt={`${props.selectedCard && props.selectedCard.cardData.name}`}
+                    src={`${props.selectedCard && props.selectedCard.link}`}
+                    alt={`${props.selectedCard && props.selectedCard.name}`}
                 />
                 <div className="modal__image-subtitle">
-                    {`${props.selectedCard && props.selectedCard.cardData.name}`}
+                    {`${props.selectedCard && props.selectedCard.name}`}
                 </div>
             </div>
         </div>

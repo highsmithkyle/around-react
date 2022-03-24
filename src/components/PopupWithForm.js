@@ -3,7 +3,8 @@ import React from 'react';
 function PopupWithForm(props) {
 
     return (
-        <div className={`modal modal_${props.modalType} ${props.isOpen ? "modal_toggle" : ""}`}
+        <div
+            className={`modal modal_${props.modalType} ${props.isOpen && "modal_toggle"}`}
         >
 
             <div className={`modal__box modal__box_type_${props.modalType}`}>

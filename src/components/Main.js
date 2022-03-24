@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from "react";
-import profileAvatar from "../images/spinner-load.gif"
+import React from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import Card from "./Card"
 import editButton from "../images/edit-button.svg"
 import addButton from "../images/add-button.svg"
-import api from "../utils/api";
-
-
-import Card from "./Card"
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-
 
 
 function Main({
@@ -27,9 +22,7 @@ function Main({
     return (
 
         <main className="content">
-
             <section className="profile">
-
                 <div className="profile__avatar">
                     <div className="profile__elipse">
                         <img className="profile__image"
@@ -64,10 +57,7 @@ function Main({
             </section>
 
             <section className="elements">
-
-
                 {cards.map((card) => {
-
                     return (
                         <Card
                             key={card._id}
@@ -75,7 +65,6 @@ function Main({
                             onCardClick={onCardClick}
                             onCardLike={onCardLike}
                             onCardDelete={onCardDelete}
-
                         />
                     )
                 })}
@@ -87,19 +76,3 @@ function Main({
 }
 
 export default Main;
-
-
-    // const [userName, setUserName] = useState("Pablo Picasso");
-    // const [userDescription, setUserDescription] = useState("Artist");
-    // const [userAvatar, setUserAvatar] = useState(profileAvatar);
-
-    // useEffect(() => {
-    //     api
-    //         .getInitialProfile()
-    //         .then((data) => {
-    //             setUserName(data.name);
-    //             setUserDescription(data.about)
-    //             setUserAvatar(data.avatar)
-    //         })
-    //         .catch((error) => console.error(error));
-    // }, []);
