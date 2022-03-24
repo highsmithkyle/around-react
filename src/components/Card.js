@@ -1,7 +1,4 @@
 import React from "react";
-
-import trashIcon from "../images/vector-trash.png"
-import heartIcon from "../images/heart.svg"
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 
@@ -16,9 +13,6 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     const isLiked = card.likes.some((item) => item._id === currentUser._id);
     const cardLikeButtonClassName = `elements__heart ${isLiked ? "elements__heart_visible" : "elements__heart_hidden"
         }`;
-
-
-
 
 
     function handleClick() {
@@ -40,7 +34,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
             <button
                 className={cardDeleteButtonClassName}
                 type="button"
-                style={{ backgroundImage: `url(${trashIcon})` }}
+                // style={{ backgroundImage: `url(${trashIcon})` }}
                 onClick={handleDeleteClick}
 
             />
@@ -58,7 +52,6 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
                     <button
                         className={cardLikeButtonClassName}
                         type="button"
-                        // style={{ backgroundImage: `url(${heartIcon})` }}
                         onClick={handleLikeClick}
 
                     />
