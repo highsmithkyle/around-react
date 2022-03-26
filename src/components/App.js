@@ -67,7 +67,6 @@ function App() {
 
 
   function handleUpdateUser(userData) {
-    debugger;
     api
       .changeProfileInfo(userData)
       .then((res) => {
@@ -122,58 +121,57 @@ function App() {
 
 
   return (
-    <div>
-      <CurrentUserContext.Provider value={currentUser}>
 
-        <Header />
+    <CurrentUserContext.Provider value={currentUser}>
 
-        <Main
-          onEditAvatarClick={handleEditAvatarClick}
-          onEditProfileClick={handleEditProfileClick}
-          onAddPlaceClick={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-        />
+      <Header />
 
-        <EditAvatarPopup
-          isOpen={isEditAvatarPopupOpen}
-          onUpdateAvatar={handleUpdateAvatar}
-          closeButton={closeButton}
-          onClose={closeAllPopups}
-        />
+      <Main
+        onEditAvatarClick={handleEditAvatarClick}
+        onEditProfileClick={handleEditProfileClick}
+        onAddPlaceClick={handleAddPlaceClick}
+        onCardClick={handleCardClick}
+        cards={cards}
+        onCardLike={handleCardLike}
+        onCardDelete={handleCardDelete}
+      />
 
-        <EditProfilePopup
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          closeButton={closeButton}
-          onUpdateUser={handleUpdateUser}
-        />
+      <EditAvatarPopup
+        isOpen={isEditAvatarPopupOpen}
+        onUpdateAvatar={handleUpdateAvatar}
+        closeButton={closeButton}
+        onClose={closeAllPopups}
+      />
 
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          closeButton={closeButton}
-          onAddPlaceSubmit={handleAddPlaceSubmit}
-        />
+      <EditProfilePopup
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+        closeButton={closeButton}
+        onUpdateUser={handleUpdateUser}
+      />
 
-        <PopupWithForm
-          modalType={"delete"}
-          modalTitle={"Are you sure?"}
-          modalButtonText={"Yes"}
-          closeButton={closeButton}
-        />
+      <AddPlacePopup
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+        closeButton={closeButton}
+        onAddPlaceSubmit={handleAddPlaceSubmit}
+      />
 
-        <ImagePopup
-          closeButton={closeButton}
-          selectedCard={selectedCard}
-          onClose={closeAllPopups}
-        />
+      <PopupWithForm
+        modalType={"delete"}
+        modalTitle={"Are you sure?"}
+        modalButtonText={"Yes"}
+        closeButton={closeButton}
+      />
 
-        <Footer />
-      </CurrentUserContext.Provider>
-    </div>
+      <ImagePopup
+        closeButton={closeButton}
+        selectedCard={selectedCard}
+        onClose={closeAllPopups}
+      />
+
+      <Footer />
+    </CurrentUserContext.Provider>
 
   )
 }
