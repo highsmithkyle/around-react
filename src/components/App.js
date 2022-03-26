@@ -19,8 +19,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  const [currentUser, setCurrentUser] = useState({ name: "", about: "" });
 
 
   useEffect(() => {
